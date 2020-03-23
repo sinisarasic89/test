@@ -8,7 +8,19 @@
      var expires="expires="+d.toGMTString();
       document.cookie=cname+"="+name+";"+expires+";path=/";
     }
-    
+        function getCookie(cname) {
+     var name=cname+"=";
+      var decodedCookie=decodeURIComponent(document.cookie);
+      var ca=decodedCookie.split(";");
+      for(var i=0;i<ca.length;i++)
+      {
+        var c=ca[i];
+        if(c.indexOf(name)==0){
+         return c.substring(name.length,c.length);
+        }
+      }
+      return "";
+    }
     function checkCookie(){
       var username=getCookie("username");
       if(username!="")
@@ -22,19 +34,7 @@
       }
     }
     
-    function getCookie(cname) {
-     var name=cname+"=";
-      var decodedCookie=decodeURIComponent(document.cookie);
-      var ca=decodedCookie.split(";");
-      for(var i=0;i<ca.length;i++)
-      {
-        var c=ca[i];
-        if(c.indexOf(name)==0){
-         return c.substring(name.length,c.length);
-        }
-      }
-      return "";
-    }
+
   </script>
 </head>
 <body onload="checkCookie()">
